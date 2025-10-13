@@ -1,0 +1,116 @@
+#include <WiFi.h>
+#include <PubSubClient.h>
+#include <DHT.h>
+
+// ====== CONFIG Wi-Fi ======
+const char* ssid = "Wokwi-GUEST";     // ou sua rede
+const char* password = "";
+
+// ====== CONFIG MQTT ======
+const char* mqtt_server = "xxxx";     // IP do seu broker (ou do MyMQTT)
+const int mqtt_port = 1883;
+
+// ====== PINOS ======
+const int ldrPin = 34;    // LDR no pino analógico
+const int dhtPin = 4;     // DHT11
+const int ledPin = 2;     // LED onboard (ou externo)
+
+// ====== OBJETOS ======
+WiFiClient espClient;
+PubSubClient client(espClient);
+#define DHTTYPE DHT11
+DHT dht(dhtPin, DHTTYPE);
+
+// ====== FUNÇÕES ======
+void setup() {
+  Serial.begin(115200);
+  pinMode(ldrPin, INPUT);
+  pinMode(ledPin, OUTPUT);
+  dht.begin();
+
+  conectarWiFi();
+  client.setServer(mqtt_server, mqtt_port);
+  client.setCallback(callback);
+}
+
+// ====== LOOP PRINCIPAL ======
+void loop() {
+  if (!client.connected()) {
+    reconnect();
+  }
+  client.loop();
+
+  // --- Lê sensores ---
+  int ldrValue = analogRead(ldrPin);
+  float temp = dht.readTemperature();
+  float umid = dht.readHumidity();
+
+  // --- Publica no MQTT ---
+  char msg[50];
+  
+  sprintf(msg, "Temperatura: %.1f C", temp);
+  client.publish("esp32/temp", msg);
+
+  sprintf(msg, "Umidade: %.1f %%", umid);
+  client.publish("esp32/umid", msg);
+
+  sprintf(msg, "Luminosidade: %d", ldrValue);
+  client.publish("esp32/ldr", msg);
+
+  // --- Exibe no Serial ---
+  Serial.println(msg);
+
+  delay(5000); // a cada 5s
+}
+
+// ====== CALLBACK (mensagens recebidas) ======
+void callback(char* topic, byte* payload, unsigned int length) {
+  String mensagem;
+  for (int i = 0; i < length; i++) {
+    mensagem += (char)payload[i];
+  }
+  mensagem.trim();
+
+  Serial.print("Comando recebido em ");
+  Serial.print(topic);
+  Serial.print(": ");
+  Serial.println(mensagem);
+
+  // Se o app enviar "piscar", LED pisca
+  if (mensagem.equalsIgnoreCase("piscar")) {
+    for (int i = 0; i < 3; i++) {
+      digitalWrite(ledPin, HIGH);
+      delay(300);
+      digitalWrite(ledPin, LOW);
+      delay(300);
+    }
+  }
+}
+
+// ====== AUXILIARES ======
+void conectarWiFi() {
+  Serial.print("Conectando ao WiFi...");
+  WiFi.begin(ssid, password);
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+    Serial.print(".");
+  }
+  Serial.println(" conectado!");
+  Serial.print("IP: ");
+  Serial.println(WiFi.localIP());
+}
+
+void reconnect() {
+  while (!client.connected()) {
+    Serial.print("Conectando ao MQTT...");
+    if (client.connect("ESP32_Sensores")) {
+      Serial.println(" conectado!");
+      // Assina o tópico para receber comandos
+      client.subscribe("esp32/led");
+    } else {
+      Serial.print(" falhou, rc=");
+      Serial.println(client.state());
+      delay(2000);
+    }
+  }
+}
