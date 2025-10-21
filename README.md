@@ -1,6 +1,6 @@
 ESP32 + DHT11 + LDR + MQTT
 
-##Vinheria Agnello – Edge Computing & Computer Systems (FIAP)
+# Vinheria Agnello – Edge Computing & Computer Systems (FIAP)
 
 Projeto desenvolvido para o Checkpoint 05, com foco em IoT e Edge Computing.
 O objetivo é implementar sensores no ESP32 e integrar os dados ao MyMQTT, simulando o monitoramento de uma adega inteligente — a Vinheria Agnello — com controle e visualização em tempo real.
