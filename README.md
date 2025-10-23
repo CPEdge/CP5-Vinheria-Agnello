@@ -2,6 +2,15 @@
 
 # Vinheria Agnello – Edge Computing & Computer Systems (FIAP)
 
+## 👥 Equipe
+
+Luis Gustavo Vasconcelos Costa – RM: 566023  
+Anna Clara Ruggeri da Silva – RM: 565553   
+Matheus Cerciari Reis – RM: 565817   
+Henrique Vicente Vicenterm – RM: XXXX  
+Arthur Gaspare Gil – RM: XXXX  
+Giovana Bernardino - RM: 566196
+
 Projeto desenvolvido para o Checkpoint 05, com foco em IoT e Edge Computing.
 O objetivo é implementar sensores no ESP32 e integrar os dados ao MyMQTT, simulando o monitoramento de uma adega inteligente — a Vinheria Agnello — com controle e visualização em tempo real.
 
@@ -40,14 +49,6 @@ VCC / GND → 3.3V e GND (alimentação)
 
 <img width="566" height="304" alt="Captura de tela 2025-10-23 074656" src="https://github.com/user-attachments/assets/5745acee-c640-48b8-be8b-0f1dac9de8e1" />
 
-## 👥 Equipe
-
-Luis Gustavo Vasconcelos Costa – RM: 566023  
-Anna Clara Ruggeri da Silva – RM: 565553   
-Matheus Cerciari Reis – RM: 565817   
-Henrique Vicente Vicenterm – RM: XXXX  
-Arthur Gaspare Gil – RM: XXXX  
-Giovana Bernardino - RM: 566196
 
 ## 🏁 Conclusão
 
