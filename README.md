@@ -30,6 +30,16 @@ O projeto demonstra a aplicação de Edge Computing, onde o ESP32 atua como nó 
  Envio contínuo de dados a cada 5 segundos  
  Exibição das leituras no Monitor Serial  
 
+ 🚀 Como Executar o Projeto
+
+Abra o Arduino IDE  
+Instale as bibliotecas: WiFi.h, PubSubClient.h e DHT.h  
+Configure o SSID e a senha da sua rede Wi-Fi  
+Insira o IP do broker MQTT no código  
+Faça o upload para o ESP32  
+Abra o Monitor Serial e verifique a conexão  
+No MyMQTT, visualize as leituras e teste os comandos  
+
 
 ## 🧩 Componentes Utilizados
 
