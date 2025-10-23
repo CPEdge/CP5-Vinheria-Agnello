@@ -7,9 +7,9 @@ O objetivo é implementar sensores no ESP32 e integrar os dados ao MyMQTT, simul
 
 ## 🧠 Contexto do Projeto
 
-A Vinheria Agnello busca garantir a qualidade de seus vinhos monitorando o ambiente da adega.
-O sistema desenvolvido capta temperatura, umidade e luminosidade e envia esses dados via MQTT para visualização e controle remoto.
-O projeto demonstra a aplicação de Edge Computing, onde o ESP32 atua como nó inteligente de captura e envio de dados para a nuvem.
+A Vinheria Agnello busca garantir a qualidade de seus vinhos monitorando o ambiente da adega.  
+O sistema desenvolvido capta temperatura, umidade e luminosidade e envia esses dados via MQTT para visualização e controle remoto.  
+O projeto demonstra a aplicação de Edge Computing, onde o ESP32 atua como nó inteligente de captura e envio de dados para a nuvem.  
 
 ## Funcionalidades
 
@@ -24,19 +24,19 @@ O projeto demonstra a aplicação de Edge Computing, onde o ESP32 atua como nó 
 
 ## 🧩 Componentes Utilizados
 
-ESP32 DevKit V1 – microcontrolador com Wi-Fi e Bluetooth integrado
-DHT11 – sensor de temperatura e umidade
-LDR – sensor de luminosidade
-LED – indicador visual (onboard ou externo)
-Resistores de 10kΩ e 220Ω – usados para pull-down e limitação de corrente
-Protoboard e jumpers – para montagem do circuito
+ESP32 DevKit V1 – microcontrolador com Wi-Fi e Bluetooth integrado  
+DHT11 – sensor de temperatura e umidade  
+LDR – sensor de luminosidade  
+LED – indicador visual (onboard ou externo)  
+Resistores de 10kΩ e 220Ω – usados para pull-down e limitação de corrente  
+Protoboard e jumpers – para montagem do circuito  
 
 ## 🔌 Esquemático de Ligação
 
-DHT11 → pino D4 (sinal)
-LDR → pino A34 (entrada analógica)
-LED → pino D2 (saída digital)
-VCC / GND → 3.3V e GND (alimentação)
+DHT11 → pino D4 (sinal)  
+LDR → pino A34 (entrada analógica)  
+LED → pino D2 (saída digital)  
+VCC / GND → 3.3V e GND (alimentação)  
 
 <img width="566" height="304" alt="Captura de tela 2025-10-23 074656" src="https://github.com/user-attachments/assets/5745acee-c640-48b8-be8b-0f1dac9de8e1" />
 
@@ -50,5 +50,5 @@ Arthur Gaspare Gil – RM: XXXX
 
 ## 🏁 Conclusão
 
-O projeto demonstra como a Internet das Coisas (IoT) pode preservar a arte tradicional da vinicultura.
-Com sensores inteligentes, o sistema garante que cada garrafa da Vinheria Agnello amadureça sob as condições perfeitas — um brinde à tecnologia e à tradição.
+O projeto demonstra como a Internet das Coisas (IoT) pode preservar a arte tradicional da vinicultura.  
+Com sensores inteligentes, o sistema garante que cada garrafa da Vinheria Agnello amadureça sob as condições perfeitas — um brinde à tecnologia e à tradição.  
