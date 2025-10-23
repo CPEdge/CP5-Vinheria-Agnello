@@ -40,7 +40,7 @@ VCC / GND → 3.3V e GND (alimentação)
 
 <img width="566" height="304" alt="Captura de tela 2025-10-23 074656" src="https://github.com/user-attachments/assets/5745acee-c640-48b8-be8b-0f1dac9de8e1" />
 
-👥 Equipe
+## 👥 Equipe
 
 Luis Gustavo Vasconcelos Costa – RM: 566023  
 Anna Clara Ruggeri da Silva – RM: 565553   
