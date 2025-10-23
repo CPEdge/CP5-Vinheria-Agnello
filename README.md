@@ -42,11 +42,11 @@ VCC / GND → 3.3V e GND (alimentação)
 
 👥 Equipe
 
-Luis Gustavo Vasconcelos Costa – RM: 566023.  
-Anna Clara Ruggeri da Silva – RM: 565553.  
-Matheus Cerciari Reis – RM: 565817.  
-Henrique Vicente Vicenterm – RM: XXXX.  
-Arthur Gaspare Gil – RM: XXXX.  
+Luis Gustavo Vasconcelos Costa – RM: 566023  
+Anna Clara Ruggeri da Silva – RM: 565553   
+Matheus Cerciari Reis – RM: 565817   
+Henrique Vicente Vicenterm – RM: XXXX  
+Arthur Gaspare Gil – RM: XXXX  
 
 ## 🏁 Conclusão
 
