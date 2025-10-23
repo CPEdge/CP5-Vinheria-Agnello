@@ -13,13 +13,13 @@ O projeto demonstra a aplicação de Edge Computing, onde o ESP32 atua como nó 
 
 ## Funcionalidades
 
- Conexão automática à rede Wi-Fi
- Leitura da temperatura e umidade (DHT11)
- Monitoramento da luminosidade ambiente (LDR)
- Publicação de dados via MQTT (tópicos esp32/temp, esp32/umid, esp32/ldr)
- Recebimento de comandos MQTT (esp32/led) para controle do LED
- Envio contínuo de dados a cada 5 segundos
- Exibição das leituras no Monitor Serial
+ Conexão automática à rede Wi-Fi  
+ Leitura da temperatura e umidade (DHT11)  
+ Monitoramento da luminosidade ambiente (LDR)  
+ Publicação de dados via MQTT (tópicos esp32/temp, esp32/umid, esp32/ldr)  
+ Recebimento de comandos MQTT (esp32/led) para controle do LED  
+ Envio contínuo de dados a cada 5 segundos  
+ Exibição das leituras no Monitor Serial  
 
 
 ## 🧩 Componentes Utilizados
