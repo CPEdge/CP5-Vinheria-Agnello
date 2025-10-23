@@ -7,8 +7,8 @@
 Luis Gustavo Vasconcelos Costa – RM: 566023  
 Anna Clara Ruggeri da Silva – RM: 565553   
 Matheus Cerciari Reis – RM: 565817   
-Henrique Vicente Vicenterm – RM: XXXX  
-Arthur Gaspare Gil – RM: XXXX  
+Henrique Vicente Vicenterm – RM: 564116  
+Arthur Gaspare Gil – RM: 555746   
 Giovana Bernardino - RM: 566196
 
 Projeto desenvolvido para o Checkpoint 05, com foco em IoT e Edge Computing.
