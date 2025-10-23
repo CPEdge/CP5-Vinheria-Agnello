@@ -47,6 +47,7 @@ Anna Clara Ruggeri da Silva – RM: 565553
 Matheus Cerciari Reis – RM: 565817   
 Henrique Vicente Vicenterm – RM: XXXX  
 Arthur Gaspare Gil – RM: XXXX  
+Giovana Bernardino - RM: 566196
 
 ## 🏁 Conclusão
 
