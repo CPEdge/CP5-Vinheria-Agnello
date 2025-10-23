@@ -30,7 +30,7 @@ O projeto demonstra a aplicação de Edge Computing, onde o ESP32 atua como nó 
  Envio contínuo de dados a cada 5 segundos  
  Exibição das leituras no Monitor Serial  
 
- 🚀 Como Executar o Projeto
+## 🚀 Como Executar o Projeto
 
 Abra o Arduino IDE  
 Instale as bibliotecas: WiFi.h, PubSubClient.h e DHT.h  
