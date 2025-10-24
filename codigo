@@ -1,39 +1,41 @@
 #include <WiFi.h>
 #include <PubSubClient.h>
-#include <DHT.h>
+#include <DHT11.h>
 
 // ====== CONFIG Wi-Fi ======
-const char* ssid = "Wokwi-GUEST";     // ou sua rede
-const char* password = "";
+const char* ssid = "FIAP-IOT";     
+const char* password = "F!@p25.IOT";
 
 // ====== CONFIG MQTT ======
-const char* mqtt_server = "xxxx";     // IP do seu broker (ou do MyMQTT)
+const char* mqtt_server = "54.221.163.3";     
 const int mqtt_port = 1883;
 
 // ====== PINOS ======
-const int ldrPin = 34;    // LDR no pino analógico
-const int dhtPin = 4;     // DHT11
-const int ledPin = 2;     // LED onboard (ou externo)
+const int ldrPin = 34;    
+const int dhtPin = 4;     
+const int ledPin = 2;     
 
 // ====== OBJETOS ======
 WiFiClient espClient;
 PubSubClient client(espClient);
-#define DHTTYPE DHT11
-DHT dht(dhtPin, DHTTYPE);
+DHT11 dht(dhtPin);   
 
-// ====== FUNÇÕES ======
+// ====== PROTÓTIPOS DAS FUNÇÕES ======
+void conectarWiFi();
+void reconnect();
+void callback(char* topic, byte* payload, unsigned int length);
+
+// ====== SETUP ======
 void setup() {
-  Serial.begin(115200);
+  Serial.begin(9600);       
   pinMode(ldrPin, INPUT);
   pinMode(ledPin, OUTPUT);
-  dht.begin();
-
   conectarWiFi();
   client.setServer(mqtt_server, mqtt_port);
   client.setCallback(callback);
 }
 
-// ====== LOOP PRINCIPAL ======
+// ====== LOOP ======
 void loop() {
   if (!client.connected()) {
     reconnect();
@@ -42,28 +44,30 @@ void loop() {
 
   // --- Lê sensores ---
   int ldrValue = analogRead(ldrPin);
-  float temp = dht.readTemperature();
-  float umid = dht.readHumidity();
+  int temp = dht.readTemperature();
+  int umid = dht.readHumidity();
 
   // --- Publica no MQTT ---
   char msg[50];
-  
-  sprintf(msg, "Temperatura: %.1f C", temp);
+  sprintf(msg, "Temperatura: %d C", temp);
   client.publish("esp32/temp", msg);
 
-  sprintf(msg, "Umidade: %.1f %%", umid);
+  sprintf(msg, "Umidade: %d", umid);
   client.publish("esp32/umid", msg);
 
   sprintf(msg, "Luminosidade: %d", ldrValue);
   client.publish("esp32/ldr", msg);
 
-  // --- Exibe no Serial ---
-  Serial.println(msg);
+  // --- Exibe no Serial separado ---
+  Serial.print("Temperatura: "); Serial.print(temp); Serial.println(" C");
+  Serial.print("Umidade: "); Serial.print(umid); Serial.println(" %");
+  Serial.print("Luminosidade: "); Serial.println(ldrValue);
+  Serial.println("-------------------------");
 
-  delay(5000); // a cada 5s
+  delay(5000);
 }
 
-// ====== CALLBACK (mensagens recebidas) ======
+// ====== CALLBACK (LED) ======
 void callback(char* topic, byte* payload, unsigned int length) {
   String mensagem;
   for (int i = 0; i < length; i++) {
@@ -76,18 +80,22 @@ void callback(char* topic, byte* payload, unsigned int length) {
   Serial.print(": ");
   Serial.println(mensagem);
 
-  // Se o app enviar "piscar", LED pisca
-  if (mensagem.equalsIgnoreCase("piscar")) {
-    for (int i = 0; i < 3; i++) {
-      digitalWrite(ledPin, HIGH);
-      delay(300);
-      digitalWrite(ledPin, LOW);
-      delay(300);
+  // 🔹 Confirma o tópico exato
+  if (String(topic) == "esp32/led") {
+    if (mensagem.equalsIgnoreCase("piscar")) {
+      Serial.println("Acionando LED...");
+      for (int i = 0; i < 3; i++) {
+        digitalWrite(ledPin, HIGH);
+        delay(300);
+        digitalWrite(ledPin, LOW);
+        delay(300);
+      }
+      Serial.println("LED piscou!");
     }
   }
 }
 
-// ====== AUXILIARES ======
+// ====== FUNÇÕES AUXILIARES ======
 void conectarWiFi() {
   Serial.print("Conectando ao WiFi...");
   WiFi.begin(ssid, password);
@@ -105,7 +113,6 @@ void reconnect() {
     Serial.print("Conectando ao MQTT...");
     if (client.connect("ESP32_Sensores")) {
       Serial.println(" conectado!");
-      // Assina o tópico para receber comandos
       client.subscribe("esp32/led");
     } else {
       Serial.print(" falhou, rc=");
