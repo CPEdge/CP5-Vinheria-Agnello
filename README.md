@@ -22,13 +22,13 @@ O projeto demonstra a aplicação de Edge Computing, onde o ESP32 atua como nó 
 
 ## Funcionalidades
 
- Conexão automática à rede Wi-Fi  
- Leitura da temperatura e umidade (DHT11)  
- Monitoramento da luminosidade ambiente (LDR)  
- Publicação de dados via MQTT (tópicos esp32/temp, esp32/umid, esp32/ldr)  
- Recebimento de comandos MQTT (esp32/led) para controle do LED  
- Envio contínuo de dados a cada 5 segundos  
- Exibição das leituras no Monitor Serial  
+ - Conexão automática à rede Wi-Fi  
+ - Leitura da temperatura e umidade (DHT11)  
+ - Monitoramento da luminosidade ambiente (LDR)  
+ -  Publicação de dados via MQTT (tópicos esp32/temp, esp32/umid, esp32/ldr)  
+ - Recebimento de comandos MQTT (esp32/led) para controle do LED  
+ - Envio contínuo de dados a cada 5 segundos  
+ - Exibição das leituras no Monitor Serial  
 
 ## 🚀 Como Executar o Projeto
 
@@ -43,19 +43,19 @@ O projeto demonstra a aplicação de Edge Computing, onde o ESP32 atua como nó 
 
 ## 🧩 Componentes Utilizados
 
-ESP32 DevKit V1 – microcontrolador com Wi-Fi e Bluetooth integrado  
-DHT11 – sensor de temperatura e umidade  
-LDR – sensor de luminosidade  
-LED – indicador visual (onboard ou externo)  
-Resistores de 10kΩ e 220Ω – usados para pull-down e limitação de corrente  
-Protoboard e jumpers – para montagem do circuito  
+- ESP32 DevKit V1 – microcontrolador com Wi-Fi e Bluetooth integrado  
+- DHT11 – sensor de temperatura e umidade  
+- LDR – sensor de luminosidade  
+- LED – indicador visual (onboard ou externo)  
+- Resistores de 10kΩ e 220Ω – usados para pull-down e limitação de corrente  
+- Protoboard e jumpers – para montagem do circuito  
 
 ## 🔌 Esquemático de Ligação
 
-DHT11 → pino D4 (sinal)  
-LDR → pino A34 (entrada analógica)  
-LED → pino D2 (saída digital)  
-VCC / GND → 3.3V e GND (alimentação)  
+- DHT11 → pino D4 (sinal)  
+- LDR → pino A34 (entrada analógica)  
+- LED → pino D2 (saída digital)  
+- VCC / GND → 3.3V e GND (alimentação)  
 
 <img width="566" height="304" alt="Captura de tela 2025-10-23 074656" src="https://github.com/user-attachments/assets/5745acee-c640-48b8-be8b-0f1dac9de8e1" />
 
